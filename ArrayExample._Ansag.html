@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML 5, HTML 5, Semantics">
+    <title>My First HTML Page</title>
+    <!-- Filename: SM1_ArrayExample_GALA.html -->
+    <style>
+      /*styling for the webpage*/
+      body{
+        font-family: Arial, sans-serif;
+        margin:20px;
+      }
+      h2{
+        color: #333;
+      }
+      input{
+        padding:8px;
+        width:200px;
+      }
+      button{
+        padding:8px 12px;
+        margin:5px;
+        cursor:pointer;
+      }
+      ul{
+        margin-top:15px;
+        padding:0px;
+      }
+      li{
+        list-style:none;
+        background-color: #f0f0f0;
+        margin:5px 0px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Javascript Array Example</h2>
+
+    <input type="text" id="itemInput" placeholder="enter an item"> <!--type into the textbox for the item to add-->
+    <button onclick="addItem()">Add Item</button> <!--click to add items-->
+    <button onclick="removeItem()">Remove Item</button> <!--click button to remove item-->
+
+    <ul id="itemList"></ul>
+
+    <!--Javascript for adding or removing an item for the list-->
+    <script>
+        let fruits = ["apple", "melon", "watermelon"]; //declare the array fruits with initial elements
+
+        function displayItems(){ //function for displaying the list items
+            let list = document.getElementById("itemList"); //to get the tag/element with itemList id --> ul
+            list.innerHTML = ""; //set innerHTML of list to blank
+
+            for(let index=0; index<fruits.length; index++){ //to dynamically create a li and add it to the unordered list
+                let li = document.createElement("li");
+                li.textContent = fruits[index]; //assign every li the fruits array element
+                list.appendChild(li);
+            }
+        }
+
+        function addItem(){
+                let input = document.getElementById("ItemInput").value; //get the inputted value from the input
+
+                if(input!==""){ // test if the input is not null or blank
+                    fruits.push(input); //add the item to the array
+                    document.getElementById("ItemInput").value="" //reset input text to blank
+                    displayItems();
+                    //consolelog.(input);
+                }//end of if
+            }
+
+            function removeItem(){
+                fruits.pop(); // remove the last element from the fruits array
+                displayItems(); //display as list items the array elements
+            }
+
+         displayItems(); //displays all the items
+
+
+    </script>
+  </body>
+</html>
